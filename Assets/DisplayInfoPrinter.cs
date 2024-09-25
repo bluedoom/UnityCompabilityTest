@@ -2,6 +2,7 @@
 using Assets;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using TMPro;
 using Unity.VisualScripting;
@@ -41,7 +42,7 @@ public class DisplayInfoPrinter : MonoBehaviour
         if (text)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"scale: {curScale}, fps:{1 / Time.deltaTime:N1} | {Application.targetFrameRate} ");
+            sb.AppendLine($"scale: {curScale}, fps:{1 / Time.deltaTime:N1} | {Application.targetFrameRate} VSync: {QualitySettings.vSyncCount}");
             sb.AppendLine($"Screen.currentResolution : {Screen.currentResolution} \n\t w & h : {Screen.width} x {Screen.height}, dpi : {Screen.dpi}");
             var main = Display.main;
             sb.AppendLine($"Display.main || system: {main.systemWidth}x{main.systemHeight} \n\t render: {main.renderingWidth}x{main.renderingHeight}");
@@ -71,7 +72,7 @@ public class DisplayInfoPrinter : MonoBehaviour
         }
         SetSize2();
     }
-
+    int interval = 0;
     float curScale = 1;
     float _lastScale = 1;
     Vector2Int _lastRes;
@@ -79,6 +80,10 @@ public class DisplayInfoPrinter : MonoBehaviour
     int lastLevel = -1;
     string benchResult = string.Empty;
 
+    public void Vsync(bool vsync)
+    {
+        QualitySettings.vSyncCount = vsync ? 1 : 0;
+    }
 
     public void SetSize2()
     {
@@ -133,45 +138,96 @@ public class DisplayInfoPrinter : MonoBehaviour
     public void ChangeFrameRate()
     {
         var max = 0.0;
-        foreach (var resolution in Screen.resolutions)
+        var resolutions = Screen.resolutions;
+        if (resolutions.Length > 0)
         {
-            max = Math.Max(max, resolution.refreshRateRatio.value);
+            foreach (var resolution in resolutions)
+            {
+                max = Math.Max(max, resolution.refreshRateRatio.value);
+            }
+        }
+        else
+        {
+            max = Math.Max(max, Screen.currentResolution.refreshRateRatio.value);
         }
         if (Application.targetFrameRate <= max && Application.targetFrameRate >= 15)
             Application.targetFrameRate += 5;
         else
             Application.targetFrameRate = 15;
+
+        //Screen.SetResolution(0,0,FullScreenMode.ExclusiveFullScreen, new RefreshRate { denominator = 1, numerator = (uint)Application.targetFrameRate });
     }
 
-    public void SetSize(float scale)
-    {
-        Resolution max = new Resolution
-        {
-            height = 720,
-            refreshRateRatio = new RefreshRate()
-            {
-                denominator = 1,
-                numerator = 60,
-            },
-            width = 1920,
-        };
-        foreach (var size in Screen.resolutions)
-        {
-            if (size.width > max.width || size.height > max.height)
-            {
-                max = size;
-            }
-        }
-        max.width = (int)(max.width * scale);
-        max.height = (int)(max.height * scale);
-        Screen.SetResolution(max.width, max.height, FullScreenMode.Windowed, max.refreshRateRatio);
+    //public void SetSize(float scale)
+    //{
+    //    Resolution max = new Resolution
+    //    {
+    //        height = 720,
+    //        refreshRateRatio = new RefreshRate()
+    //        {
+    //            denominator = 1,
+    //            numerator = 60,
+    //        },
+    //        width = 1920,
+    //    };
+    //    foreach (var size in Screen.resolutions)
+    //    {
+    //        if (size.width > max.width || size.height > max.height)
+    //        {
+    //            max = size;
+    //        }
+    //    }
+    //    max.width = (int)(max.width * scale);
+    //    max.height = (int)(max.height * scale);
+    //    Screen.SetResolution(max.width, max.height, FullScreenMode.Windowed, max.refreshRateRatio);
 
-        //Debug.Log("set to" + max);
-    }
+    //    //Debug.Log("set to" + max);
+    //}
 
     public void ResetRes()
     {
-        Screen.SetResolution(0, 0, true);
+        var r = Screen.currentResolution;
+        List<(int, RefreshRate)> valid = new List<(int, RefreshRate)>();
+        HashSet<RefreshRate> allRefreshrate = new HashSet<RefreshRate>();
+        foreach (var resolution in Screen.resolutions)
+        {
+            allRefreshrate.Add(resolution.refreshRateRatio);
+        }
+        foreach (var rr in allRefreshrate)
+        {
+            var hz = 0;
+            var value = rr.value;
+            do
+            {
+                hz = (int)Math.Ceiling(value);
+                valid.Add((hz, rr));
+                value /= 2;
+            } while (hz > 27);
+        }
+
+        if (valid.Count > 0)
+        {
+            valid.Sort((a, b) => a.Item1 - b.Item1);
+            var target = Application.targetFrameRate;
+
+            var (hz, rate) = target == 0 ? valid[valid.Count - 1] : valid[0];
+            for (int i = 1; i < valid.Count; i++)
+            {
+                var (curHz, curRate) = valid[i];
+                var diff = target - curHz;
+                if (diff >= 0)
+                {
+                    hz = curHz;
+                    rate = curRate;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            Debug.Log($"set resolution to {r.width}x{r.height} @{rate}");
+            Screen.SetResolution(r.width, r.height, FullScreenMode.FullScreenWindow, rate);
+        }
     }
 
     private void OnEnable()

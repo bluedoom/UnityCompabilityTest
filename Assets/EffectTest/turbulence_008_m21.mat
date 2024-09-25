@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: turbulence_008_m21
+  m_Shader: {fileID: 4800000, guid: 2bd789cb917c9bd4a96b1071615f85a4, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _ENABLEMASK_ON
+  - _ENABLEMESHPARAM_ON
+  m_InvalidKeywords:
+  - _ENABLEBUMP1_MULTI
+  - _ENABLESUBTEX2_OFF
+  - _ENABLESUBTEX_MULTI
+  - _ENABLETURBULENCE_OFF
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpATex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpATex1:
+        m_Texture: {fileID: 2800000, guid: 73aa3f8e54f78544eaeb68768632a44e, type: 3}
+        m_Scale: {x: 0.7, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpBTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpBTex1:
+        m_Texture: {fileID: 2800000, guid: cc7176470a5fce444920f08bd71c01fe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveTex:
+        m_Texture: {fileID: 2800000, guid: df283979b0daa42458e8f9ac42285c14, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ExplodeTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FlameDetail:
+        m_Texture: {fileID: 2800000, guid: e0429179456a6f84d8cdad8a1fb6b31d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 67c3de8eeda1df544a7ceec07b9912c1, type: 3}
+        m_Scale: {x: 1, y: 0.28}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 2800000, guid: a4fa29f01730d624998327ed19685028, type: 3}
+        m_Scale: {x: 3, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShapeMask:
+        m_Texture: {fileID: 2800000, guid: a059773d60aa3c443a29901d1567280d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: -0.05, y: 0}
+    - _SubTex:
+        m_Texture: {fileID: 2800000, guid: acb24d49ae9dc4148be908896ee7ea76, type: 3}
+        m_Scale: {x: 0.7, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SubTex2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TurbulenceATex:
+        m_Texture: {fileID: 2800000, guid: a86231e33317af14a95629bc7d7cec0e, type: 3}
+        m_Scale: {x: 0.5, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TurbulenceBTex:
+        m_Texture: {fileID: 2800000, guid: 6c0e52e1c81203b4f9e0a8b3cf97496f, type: 3}
+        m_Scale: {x: 0.5, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _BlendDst: 10
+    - _BlendSrc: 5
+    - _BumpScale: 1
+    - _Clip: 0.5
+    - _ColorMask: 0
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DepthFadeDistance: 0
+    - _DepthFadeInvert: 0
+    - _DepthFadePower: 0
+    - _DetailNormalMapScale: 1
+    - _DissolveRange: 0.1
+    - _DissolveTexTurbulence: 0
+    - _DstBlend: 0
+    - _EnableBump: 0
+    - _EnableBump1: 4
+    - _EnableClip: 0
+    - _EnableDepthFade: 0
+    - _EnableDissolve: 0
+    - _EnableExplode: 0
+    - _EnableFresnel: 0
+    - _EnableMask: 1
+    - _EnableMeshParam: 1
+    - _EnableRemap: 0
+    - _EnableSubTex: 2
+    - _EnableSubTex2: 0
+    - _EnableTurbulence: 0
+    - _ExplodeRange: 0
+    - _FlameEdgeSize: 0.05
+    - _FlameShapeStrength: 1
+    - _FresnelPower: 0
+    - _FresnelScale: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _MainTexTurbulence: 0
+    - _MaskTexTurbulence: 0
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _OutterFlameSize: 0.58
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 0
+    - _StencilWriteMask: 0
+    - _SubTex2Turbulence: 0
+    - _SubTexTurbulence: 0.1
+    - _TintActorAmbient: 1
+    - _UVSec: 0
+    - _ZOffset: 0
+    - _ZTest: 0
+    - _ZWrite: 0
+    m_Colors:
+    - _AddColor: {r: 0, g: 0, b: 0, a: 0}
+    - _BumpAParam: {r: 0, g: 0, b: 1, a: 1}
+    - _BumpAParam1: {r: 0.7, g: 0, b: 1, a: 1}
+    - _BumpBParam: {r: 0, g: 0, b: 1, a: 1}
+    - _BumpBParam1: {r: 0, g: 0, b: 1.5, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DissolveColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+    - _DissolveOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ExplodeColorHigh: {r: 1, g: 0.3615362, b: 0, a: 0}
+    - _ExplodeColorLow: {r: 4.924578, g: 1.77671, b: 0, a: 0}
+    - _ExplodeSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _FresnelTintColor: {r: 0, g: 0, b: 0, a: 0}
+    - _InnerFlameColor: {r: 3.064647, g: 2.055412, b: 1.8069851, a: 1}
+    - _MeshParamA: {r: 0, g: 0, b: 0, a: 0}
+    - _MeshParamB: {r: 0, g: 1, b: 0.03, a: 0}
+    - _OutterFlameColor: {r: 1.3875303, g: 1.0471927, b: 0.96210825, a: 1}
+    - _ParamA: {r: -0.14, g: 0.2, b: 0.5, a: 2}
+    - _ParamB: {r: -0.24, g: -0.2, b: 0.6, a: 1.5}
+    - _RemapColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SubTex2TintColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SubTexTintColor: {r: 1.187118, g: 0.53570986, b: 0.3639749, a: 1}
+    - _Test: {r: 0, g: 0, b: 0, a: 0}
+    - _TintColor: {r: 2.433572, g: 2.433572, b: 2.433572, a: 1}
+    - _TurbulenceAParam: {r: -0.3, g: 0, b: 0, a: 1}
+    - _TurbulenceBParam: {r: -0.3, g: 0.2, b: 1, a: 1}
+  m_BuildTextureStacks: []
